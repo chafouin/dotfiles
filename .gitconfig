@@ -1,0 +1,34 @@
+[core]
+  pager = less
+  filemode = true
+[color]
+	status = true
+	ui = true
+	branch = true
+	diff = true
+	interactive = true
+[alias]
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
+  ls = ls-tree --name-only -r HEAD
+  st = status
+  cm = commit -am
+  ca = commit --amend
+  ch = checkout
+  me = merge
+  rb = rebase
+  rc = rebase --continue
+  ra = rebase --abort
+  rs = rebase --skip
+  ps = push
+  pl = pull --rebase
+  ft = fetch -p --all
+  br = branch
+  bl = blame
+  sh = stash
+  sp = stash pop
+  sc = stash clear
+  sl = shortlog -ns
+  pt = push --tags
+  cl = clone
+[push]
+	default = simple
