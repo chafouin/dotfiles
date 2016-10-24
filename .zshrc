@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=/opt/oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -18,7 +18,7 @@ ZSH_THEME="rkj-repos"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=1
+export UPDATE_ZSH_DAYS=7
 
 # Uncomment to automatically upgrade without prompting you
 export DISABLE_UPDATE_PROMPT=true
@@ -75,4 +75,10 @@ export LANG=en_US.UTF-8
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-source $HOME/.bash_aliases
+if [ -f ~/.bash_aliases ]; then
+  source $HOME/.bash_aliases
+fi
+
+if [ -f ~/.functions ]; then
+  source $HOME/.functions
+fi

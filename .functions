@@ -1,0 +1,63 @@
+# Extract any files
+extract ()
+{
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xvjf $1    ;;
+            *.tar.gz)    tar xvzf $1    ;;
+            *.tar.xz)    tar xvJf $1    ;;
+            *.bz2)       bunzip2 $1     ;;
+            *.rar)       unrar x $1     ;;
+            *.gz)        gunzip $1      ;;
+            *.tar)       tar xvf $1     ;;
+            *.tbz2)      tar xvjf $1    ;;
+            *.tgz)       tar xvzf $1    ;;
+            *.zip)       unzip $1       ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1        ;;
+            *)           echo "Soorry, I don't know how to extract '$1'" ;;
+        esac
+    else
+        echo "'$1' is not a valid file!"
+    fi
+}
+
+# Python virtual environment manager
+virtenv() {
+    if [ $# -eq 0 ]; then
+        for ve in $(echo $VIRTUAL_ENV_ROOT/*); do
+            echo "* $([ "$VIRTUAL_ENV" = $ve ] && echo "\033[32m")$(basename $ve)\033[0m"
+        done
+    else
+        case "$1" in
+            -c|--create)
+                [ "$2" != "" ] && virtualenv --no-site-packages --distribute -p $(which python3) $VIRTUAL_ENV_ROOT/$2
+                ;;
+            -d|--delete)
+                [ "$2" != "" ] && rm -r $VIRTUAL_ENV_ROOT/$2
+                ;;
+            *)
+                which deactivate > /dev/null && deactivate
+                ACTIVATE=$VIRTUAL_ENV_ROOT/$1/bin/activate
+                [ -f $ACTIVATE ] && source $ACTIVATE
+                ;;
+        esac
+    fi
+}
+
+# Markdown viewer
+md() {
+    pandoc -s -f markdown -t man $1 | man -l -
+}
+
+shellcode() {
+  hexdump -v -e '"\\""x" 1/1 "%02x" ""' ${1}
+}
+
+gpg_id() {
+  gpg --list-keys $1 | awk 'FNR == 2 {print $1}'
+}
+
+mktemp_dir() {
+  pushd $(mktemp -d)
+}
