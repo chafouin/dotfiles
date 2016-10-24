@@ -82,3 +82,9 @@ fi
 if [ -f ~/.functions ]; then
   source $HOME/.functions
 fi
+
+if [ -f /usr/bin/screenfetch ]; then
+  screenfetch
+fi
+
+
