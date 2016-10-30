@@ -23,7 +23,13 @@ alias diff='colordiff'
 alias j='jobs -l'
 
 # Show open ports
-alias ports='netstat -tulanp'
+alias ports='netstat -atupnl'
+
+# Show open connections
+alias conntrak="watch ss -tp"
+
+# Delete file
+alias delete="shred -f -u"
 
 # Ask safety confirmation
 alias mv='mv -fiv'
