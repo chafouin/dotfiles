@@ -127,3 +127,6 @@ alias umounta="fusermount -u"
 
 # Create a temp dir and go in it
 alias tmp="mktemp_dir"
+
+# Get public ip
+aliasl myip="wget http://ipinfo.io/ip -qO -"
