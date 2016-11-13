@@ -46,7 +46,6 @@ alias update='sudo $INSTALLER update && sudo $INSTALLER upgrade -y && update-fla
 alias reboot='sudo /sbin/reboot'
 alias poweroff='sudo /sbin/poweroff'
 alias shutdown='sudo /sbin/shutdown'
-#alias logout='i3-msg exit'
 
 # Get RAM info
 alias meminfo='free -mlt'
@@ -100,6 +99,7 @@ alias dockerkill='docker kill $(docker ps -q)'
 alias dockercleanc='docker rm -f $(docker ps -aq)'
 alias dockercleani='docker rmi -f $(docker images -q)'
 alias dockercleanu='docker rmi -f $(docker images -q --filter "dangling=true")'
+alias dockercleans='docker ps -a | grep "Exited" | awk "{print $1}" | xargs --no-run-if-empty docker rm -fv'
 alias dockerclean='dockerkill; dockercleanc || true && dockercleani'
 alias dockersh='docker exec -ti $(docker ps -q | head -n 1) /bin/bash'
 
@@ -112,9 +112,6 @@ alias fluxstop="kill $(pgrep xflux)"
 
 # Update Flash Player
 alias update-flash="sudo update-flashplugin-nonfree --install"
-
-# Get ip
-alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 # Ssh agent
 alias agent="ssh-agent && ssh-add"
@@ -129,4 +126,4 @@ alias umounta="fusermount -u"
 alias tmp="mktemp_dir"
 
 # Get public ip
-aliasl myip="wget http://ipinfo.io/ip -qO -"
+alias myip="wget http://ipinfo.io/ip -qO -"
