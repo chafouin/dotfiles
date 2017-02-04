@@ -119,9 +119,6 @@ set colorcolumn=80
 set timeoutlen=1000
 set ttimeoutlen=10
 
-" Allow mouse use
-set mouse=a
-
 " Enhance command line completion
 set wildmenu
 
@@ -158,13 +155,16 @@ let mapleader = ","
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Remove trailing space when pressing , + r
-nnoremap <Leader>r :%s/\s\+$//e<CR>
+nnoremap <Leader>t :%s/\s\+$//e<CR>
 
 " Remove hightlighting when pressing , + h
 nnoremap <Leader>h :noh<CR>
 
-" Toogle number/relative number mode when pressing , + n
-nnoremap <Leader>n :call NumberToggle()<CR>
+" Toggle relative line number mode when pressing , + r
+nnoremap <Leader>r :call RulerToggle()<CR>
+
+" Toggle display line number when pressing , + n
+nnoremap <Leader>n :set invnumber<CR>
 
 " Display trailing whitespace in red
 match ErrorMsg '\s\+$'
@@ -182,7 +182,7 @@ nnoremap k gk
 nnoremap Y y$
 
 " Function used to toggle number / relative bumber mode
-function! NumberToggle()
+function! RulerToggle()
   if (&relativenumber == 1)
     set norelativenumber
   else
