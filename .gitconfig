@@ -1,12 +1,3 @@
-[core]
-  pager = less
-  filemode = true
-[color]
-	status = true
-	ui = true
-	branch = true
-	diff = true
-	interactive = true
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
   ls = ls-tree --name-only -r HEAD
@@ -30,5 +21,15 @@
   sl = shortlog -ns
   pt = push --tags
   cl = clone
+[core]
+  pager = less -R
+  filemode = true
+  compression = 6
+[color]
+	status = true
+	ui = true
+	branch = true
+	diff = true
+	interactive = true
 [push]
 	default = simple
