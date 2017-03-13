@@ -1,8 +1,8 @@
-" Load pathogen plugins
-call pathogen#infect()
-
 " Disable vi compatibility mode
 set nocompatible
+
+" Load pathogen plugins
+call pathogen#infect()
 
 " Enable filetype detection for plugins and indentation options
 filetype plugin indent on
@@ -12,6 +12,9 @@ set autoread
 
 " Write the file when we leave the buffer
 set autowrite
+
+" The default 20 isn't nearly enough
+set history=9999
 
 " Force encoding to UTF-8
 set encoding=utf-8
@@ -24,6 +27,9 @@ set scrolloff=5
 
 " Show current mode
 set showmode
+
+" Don't show the startup message
+set shortmess=I
 
 " Always show status line
 set laststatus=2
@@ -196,6 +202,12 @@ au BufRead,BufNewFile *.aasm set filetype=aasm
 " Use color in .ll files
 au BufRead,BufNewFile *.ll set filetype=lex
 
+" Better completion
+set completeopt+=longest,menuone,preview
+
+" Smarter completion in C
+autocmd FileType c set omnifunc=ccomplete#Complete
+
 " Split configuration
 set splitbelow
 set splitright
@@ -207,3 +219,26 @@ nnoremap <C-Down> <C-W><Down>
 " Toggle paste mode
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
+
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+" To open a new empty buffer
+" This replaces :tabnew which I used to bind to this mapping
+nmap <leader>b :enew<cr>
+
+" Move to the next buffer
+nmap <leader>k :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>j :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>q :bp <BAR> bd #<CR>
+
+" Show all open buffers and their status
+nmap <leader>l :ls<CR>
