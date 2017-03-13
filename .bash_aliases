@@ -1,23 +1,14 @@
-# Launch i3lock (call /bin/lock script)
-alias lk='clear && lock.sh'
-
 # Some ls alias
 alias ls='ls --color=auto'
-alias ll='ls -lAF'
+alias ll='ls -lAFh'
 alias la='ls -A'
 alias l='ls -CF'
 
 # Start the calculator
 alias bc='bc -lq'
 
-# Generate sha1 digest
-alias sha1='openssl sha1'
-
 # Create parent directory when mkdir
 alias mkdir='mkdir -pv'
-
-# Colorize diff
-alias diff='colordiff'
 
 # Display jobs with PID
 alias j='jobs -l'
@@ -31,6 +22,15 @@ alias conntrak="watch ss -tp"
 # Delete file
 alias delete="shred -f -u"
 
+# Show open connections
+alias conntrak="watch ss -tp"
+
+# Show uptime
+alias up='uptime'
+
+# Delete file
+alias delete="shred -f -u"
+
 # Ask safety confirmation
 alias mv='mv -fiv'
 alias cp='cp -rfiv'
@@ -39,13 +39,14 @@ alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 
-# Update & upgrade at the same time
-alias update='sudo $INSTALLER update && sudo $INSTALLER upgrade -y && update-flash'
+## Colorize grep command
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 
-# Call sudo with poweroff
-alias reboot='sudo /sbin/reboot'
-alias poweroff='sudo /sbin/poweroff'
-alias shutdown='sudo /sbin/shutdown'
+# Get disk info
+alias df='df -H'
+alias du='du -ch'
 
 # Get RAM info
 alias meminfo='free -mlt'
@@ -59,15 +60,8 @@ alias psmem='ps auxf | sort -nr -k 4 | head -10'
 # Get top process eating cpu
 alias pscpu='ps auxf | sort -nr -k 3 | head -10'
 
-# Always use htop
-alias top='htop'
-
-# Change screen brightness
-alias bup='xbacklight -inc 20'
-alias bdw='xbacklight -dec 20'
-
-# Call valgrind colored
-alias vg='valgrind-color'
+# Filter ps with grep
+alias psa='ps auxw | grep $1'
 
 # Call gdb without starting message
 alias gdb='gdb -q'
@@ -75,23 +69,12 @@ alias gdb='gdb -q'
 # Kill all background jobs
 alias ka='kill -9 `jobs -p`'
 
-# Bind iwconfig & ifconfig
-alias ifconfig='sudo /sbin/ifconfig'
-alias iwconfig='sudo /sbin/iwconfig'
-
-# Control keyboard backlight
-alias kbd='backlight.sh down'
-alias kbu='backlight.sh up'
-
-# Make
-alias make='make -j10'
-
 # Python alias
 alias py='python2.7'
 alias py3='python3.4'
 
 # Reload bash config
-alias reload='source ~/.bashrc'
+alias reload='source ~/.$(echo $)rc'
 
 # Docker alias
 alias docker='sudo docker'
@@ -103,15 +86,14 @@ alias dockercleans='docker ps -a | grep "Exited" | awk "{print $1}" | xargs --no
 alias dockerclean='dockerkill; dockercleanc || true && dockercleani'
 alias dockersh='docker exec -ti $(docker ps -q | head -n 1) /bin/bash'
 
-# Gnome wifi manager
-alias wifi='gnome-control-center network'
+# Get ip
+alias myip="curl ifconfig.co"
 
-# Start and stio flux
-alias fluxstart="xflux -l 48.51 -g 2.20"
-alias fluxstop="kill $(pgrep xflux)"
+# Get city
+alias myct="curl ifconfig.co/city"
 
-# Update Flash Player
-alias update-flash="sudo update-flashplugin-nonfree --install"
+# Get country
+alias mycn="curl ifconfig.co/country"
 
 # Ssh agent
 alias agent="ssh-agent && ssh-add"
@@ -122,8 +104,26 @@ alias mounta="jmtpfs"
 # Unmount Android
 alias umounta="fusermount -u"
 
+# Print nicely mount output
+alias mnt='mount | column -t'
+
 # Create a temp dir and go in it
 alias tmp="mktemp_dir"
 
-# Get public ip
-alias myip="wget http://ipinfo.io/ip -qO -"
+# Tmux attach last session or create new one
+alias tma="tmux attach || tmux"
+
+# Tmux attach to given session
+alias tmt="tmux attach -t"
+
+# Tmux print all session
+alias tml="tmux ls"
+
+# Tmux create new session tagged with the current dir name
+alias tmd="tmux new-session -A -s $(basename $PWD | tr -d .)"
+
+# Kill given session
+alias tmk="tmux kill-session -t"
+
+# Start a local webserver from the current directory
+alias httpsrv='python -m SimpleHTTPServer'
