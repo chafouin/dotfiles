@@ -57,34 +57,28 @@ plugins=(git)
 # User configuration
 export PAGER=less
 export EDITOR=vim
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+if [ -f $HOME/.scripts ]; then
+  export PATH=$PATH:$HOME/.scripts:
+fi
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-if [ -f ~/.bash_aliases ]; then
+if [ -f $HOME/.bash_aliases ]; then
   source $HOME/.bash_aliases
 fi
 
-if [ -f ~/.functions ]; then
+if [ -f $HOME/.functions ]; then
   source $HOME/.functions
+fi
+
+if [ -f $ZSH/oh-my-zsh.sh ]; then
+  source $ZSH/oh-my-zsh.sh
 fi
 
 if [ -f /usr/bin/screenfetch ]; then
   screenfetch
 fi
-
-

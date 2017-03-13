@@ -51,6 +51,7 @@ fi
 export PAGER=less
 export EDITOR=vim
 export PATH=$PATH:$HOME/.scripts:
+export LANG=en_US.UTF-8
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
@@ -99,13 +100,13 @@ esac
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-if [ -f ~/.bash_aliases ]; then
-    source ~/.bash_aliases
+if [ -f $HOME/.bash_aliases ]; then
+    source $HOME/.bash_aliases
 fi
 
 # Functions definitions.
-if [ -f ~/.functions ]; then
-    source ~/.functions
+if [ -f $HOME/.functions ]; then
+    source $HOME/.functions
 fi
 
 # enable programmable completion features (you don't need to enable
