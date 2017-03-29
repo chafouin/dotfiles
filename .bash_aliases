@@ -1,3 +1,5 @@
+alias lk='lock.sh'
+
 # Some ls alias
 alias ls='ls --color=auto'
 alias ll='ls -lAFh'
@@ -74,7 +76,7 @@ alias py='python2.7'
 alias py3='python3.5'
 
 # Reload bash config
-alias reload='source ~/.$(echo $)rc'
+alias reload='source ~/.$(echo $0)rc'
 
 # Docker alias
 alias docker='sudo docker'
