@@ -1,5 +1,3 @@
-alias lk='lock.sh'
-
 # Some ls alias
 alias ls='ls --color=auto'
 alias ll='ls -lAFh'
