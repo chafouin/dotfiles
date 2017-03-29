@@ -83,3 +83,11 @@ port_scan() {
 as_discovery() {
   whois -h whois.cymru.com " -v $1"
 }
+
+dict() {
+  if [[ "$1" =~ (d|m) ]]; then
+    curl -s dict://dict.org/$1:$2 | $PAGER
+  else
+    echo 'Unknown command. Use (d)efine or (m)atch.'
+  fi
+}

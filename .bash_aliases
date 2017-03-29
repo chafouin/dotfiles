@@ -71,7 +71,7 @@ alias ka='kill -9 `jobs -p`'
 
 # Python alias
 alias py='python2.7'
-alias py3='python3.4'
+alias py3='python3.5'
 
 # Reload bash config
 alias reload='source ~/.$(echo $)rc'
@@ -126,4 +126,4 @@ alias tmd="tmux new-session -A -s $(basename $PWD | tr -d .)"
 alias tmk="tmux kill-session -t"
 
 # Start a local webserver from the current directory
-alias httpsrv='python -m SimpleHTTPServer'
+alias httpsrv='python3 -m http.server'
