@@ -30,15 +30,6 @@ shopt -s globstar
 # Use extra globing features. See man bash, search extglob.
 shopt -s extglob
 
-# Include .files when globbing.
-shopt -s dotglob
-
-# When a glob expands to nothing, make it an empty string instead of the literal characters.
-shopt -s nullglob
-
-# Fix spelling errors for cd, only in interactive shell
-shopt -s cdspell
-
 # Make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -102,6 +93,12 @@ esac
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 if [ -f $HOME/.bash_aliases ]; then
     source $HOME/.bash_aliases
+fi
+
+# While .bash_aliases contains generic aliases, .bash_aliases.local contains
+# aliases specific to the machine.
+if [ -f $HOME/.bash_aliases_local ]; then
+    source $HOME/.bash_aliases_local
 fi
 
 # Functions definitions.

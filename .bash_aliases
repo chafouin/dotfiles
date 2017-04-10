@@ -19,17 +19,11 @@ alias ports='netstat -atupnl'
 # Show open connections
 alias conntrak="watch ss -tp"
 
-# Delete file
-alias delete="shred -f -u"
-
-# Show open connections
-alias conntrak="watch ss -tp"
-
 # Show uptime
 alias up='uptime'
 
 # Delete file
-alias delete="shred -f -u"
+alias del="shred -f -u"
 
 # Ask safety confirmation
 alias mv='mv -fiv'
@@ -70,8 +64,8 @@ alias gdb='gdb -q'
 alias ka='kill -9 `jobs -p`'
 
 # Python alias
-alias py='python2.7'
-alias py3='python3.5'
+alias py='/usr/bin/env python'
+alias py3='/usr/bin/env python3'
 
 # Reload bash config
 alias reload='source ~/.$(echo $0)rc'
@@ -98,32 +92,32 @@ alias mycn="curl ifconfig.co/country"
 # Ssh agent
 alias agent="ssh-agent && ssh-add"
 
-# Mount Android
-alias mounta="jmtpfs"
-
-# Unmount Android
-alias umounta="fusermount -u"
-
 # Print nicely mount output
 alias mnt='mount | column -t'
 
 # Create a temp dir and go in it
 alias tmp="mktemp_dir"
 
+# Start tmux with 256 colors support
+alias tmu="tmux -2"
+
 # Tmux attach last session or create new one
-alias tma="tmux attach || tmux"
+alias tma="tmu attach || tmu"
 
 # Tmux attach to given session
-alias tmt="tmux attach -t"
+alias tmt="tmu attach -t"
 
 # Tmux print all session
 alias tml="tmux ls"
 
 # Tmux create new session tagged with the current dir name
-alias tmd="tmux new-session -A -s $(basename $PWD | tr -d .)"
+alias tmd="tmu new-session -A -s $(basename $PWD | tr -d .)"
 
 # Kill given session
 alias tmk="tmux kill-session -t"
 
 # Start a local webserver from the current directory
-alias httpsrv='python3 -m http.server'
+alias httpsrv='py3 -m http.server'
+
+# Download the targeted URL
+alias dl='curl -OL'
