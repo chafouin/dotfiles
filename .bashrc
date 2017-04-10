@@ -41,7 +41,6 @@ fi
 # Exports definitions.
 export PAGER=less
 export EDITOR=vim
-export PATH=$PATH:$HOME/.scripts:
 export LANG=en_US.UTF-8
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
@@ -49,6 +48,9 @@ export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM=verbose
 export GIT_PS1_DESCRIBE_STYLE=branch
 
+if [ -d $HOME/.scripts ]; then
+  export PATH=$PATH:$HOME/.scripts:
+fi
 
 # Set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in

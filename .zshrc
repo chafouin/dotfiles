@@ -59,7 +59,7 @@ export PAGER=less
 export EDITOR=vim
 export LANG=en_US.UTF-8
 
-if [ -f $HOME/.scripts ]; then
+if [ -d $HOME/.scripts ]; then
   export PATH=$PATH:$HOME/.scripts:
 fi
 
