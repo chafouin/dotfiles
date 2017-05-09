@@ -94,18 +94,18 @@ esac
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 if [ -f $HOME/.bash_aliases ]; then
-    source $HOME/.bash_aliases
+  source $HOME/.bash_aliases
 fi
 
 # While .bash_aliases contains generic aliases, .bash_aliases.local contains
 # aliases specific to the machine.
 if [ -f $HOME/.bash_aliases_local ]; then
-    source $HOME/.bash_aliases_local
+  source $HOME/.bash_aliases_local
 fi
 
 # Functions definitions.
 if [ -f $HOME/.functions ]; then
-    source $HOME/.functions
+  source $HOME/.functions
 fi
 
 # enable programmable completion features (you don't need to enable

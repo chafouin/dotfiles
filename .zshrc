@@ -72,7 +72,7 @@ if [ -f $HOME/.bash_aliases ]; then
 fi
 
 if [ -f $HOME/.bash_aliases_local ]; then
-    source $HOME/.bash_aliases_local
+  source $HOME/.bash_aliases_local
 fi
 
 if [ -f $HOME/.functions ]; then
