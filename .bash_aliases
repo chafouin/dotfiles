@@ -68,7 +68,7 @@ alias py='/usr/bin/env python'
 alias py3='/usr/bin/env python3'
 
 # Reload bash config
-alias reload='source ~/.$(echo $0)rc'
+alias reload='source ~/.$(echo ${0//-})rc'
 
 # Docker alias
 alias docker='sudo docker'
