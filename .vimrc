@@ -242,3 +242,6 @@ nmap <leader>q :bp <BAR> bd #<CR>
 
 " Show all open buffers and their status
 nmap <leader>l :ls<CR>
+
+autocmd Filetype python setlocal ts=4 sts=4 sw=4
+autocmd Filetype c setlocal ts=4 sts=4 sw=4
