@@ -14,7 +14,7 @@ alias mkdir='mkdir -pv'
 alias j='jobs -l'
 
 # Show open ports
-alias ports='netstat -atupnl'
+alias ports='ss -tuapnl'
 
 # Show open connections
 alias conntrak="watch ss -tp"
