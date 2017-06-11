@@ -1,6 +1,13 @@
 " Disable vi compatibility mode
 set nocompatible
 
+" Install pathogen
+if empty(glob("~/.vim/autoload/pathogen.vim"))
+    execute '!mkdir -p ~/.vim/autoload'
+    execute '!mkdir -p ~/.vim/bundle'
+    execute '!curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim'
+endif
+
 " Load pathogen plugins
 call pathogen#infect()
 
@@ -131,6 +138,10 @@ set wildmenu
 " Set completion behavior
 set wildmode=list:longest:full
 
+" Disable bell completely
+set visualbell
+set t_vb=
+
 " Briefly show matching braces, parens, etc
 set showmatch
 
@@ -243,5 +254,6 @@ nmap <leader>q :bp <BAR> bd #<CR>
 " Show all open buffers and their status
 nmap <leader>l :ls<CR>
 
+" Set special indentation for C & Python files
 autocmd Filetype python setlocal ts=4 sts=4 sw=4
 autocmd Filetype c setlocal ts=4 sts=4 sw=4
