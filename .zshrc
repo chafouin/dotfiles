@@ -86,3 +86,5 @@ fi
 if [ -f /usr/bin/screenfetch ]; then
   screenfetch
 fi
+
+export LC_ALL=en_US.UTF-8
