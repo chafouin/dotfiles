@@ -34,6 +34,7 @@
   cl = clone
   re = remote -v
   df = diff --staged
+  pr = "!f() { git fetch $1 refs/pull-requests/$2/from:$1-PR-$2 && git checkout $1-PR-$2; }; f"
 [push]
 	default = simple
 [pull]
