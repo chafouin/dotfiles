@@ -10,3 +10,5 @@ This repository is containing the following dotfiles :
 * .vim/colors/mustang.vim
 * .vimrc
 * .zshrc
+
+Files are managed using [yadm](https://github.com/TheLocehiliosan/yadm).
