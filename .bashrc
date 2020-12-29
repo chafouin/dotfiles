@@ -15,13 +15,19 @@ HISTCONTROL=ignoreboth
 # append to the history file, don't overwrite it
 shopt -s histappend
 
+# Store multiline commands as one line.
+shopt -s cmdhist
+
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=20000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
+# Spellcheck directories
+shopt -s dirspell
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
@@ -42,6 +48,7 @@ fi
 export PAGER=less
 export EDITOR=vim
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
@@ -54,13 +61,15 @@ fi
 
 # Set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+  xterm-color) color_prompt=yes;;
+  screen-256color) color_prompt=yes;;
+  screen) color_prompt=yes;;
 esac
 
 # Uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-force_color_prompt=yes
+#force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
   if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -99,13 +108,18 @@ fi
 
 # While .bash_aliases contains generic aliases, .bash_aliases.local contains
 # aliases specific to the machine.
-if [ -f $HOME/.bash_aliases_local ]; then
-  source $HOME/.bash_aliases_local
+if [ -f $HOME/.bash_aliases.local ]; then
+  source $HOME/.bash_aliases.local
 fi
 
 # Functions definitions.
 if [ -f $HOME/.functions ]; then
   source $HOME/.functions
+fi
+
+# Local functions definitions.
+if [ -f $HOME/.functions.local ]; then
+  source $HOME/.functions.local
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -116,7 +130,7 @@ if ! shopt -oq posix; then
     . /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
+  else
+    [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
   fi
 fi
-
-export LC_ALL=en_US.UTF-8

@@ -3,11 +3,12 @@
   filemode = true
   compression = 6
 [color]
-	status = true
 	ui = auto
-	branch = true
-	diff = true
-	interactive = true
+	branch = auto
+	diff = auto
+	grep = auto
+	interactive = auto
+	status = auto
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
   ls = ls-tree --name-only -r HEAD
@@ -22,7 +23,7 @@
   rs = rebase --skip
   ps = push
   pl = pull --rebase
-  ft = fetch -p --all
+  ft = fetch -p --all --tags
   br = branch
   bl = blame
   sh = stash
@@ -32,7 +33,22 @@
   pt = push --tags
   cl = clone
   re = remote -v
+  df = diff --staged
 [push]
 	default = simple
+[pull]
+	rebase = true
 [branch]
 	autosetuprebase = always
+[rebase]
+	autoStash = true
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
+	keepBackup = false
+[mergetool "vimdiff"]
+	cmd = vim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[include]
+	path = .gitconfig.local
