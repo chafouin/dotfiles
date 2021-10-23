@@ -54,16 +54,3 @@ fi
 if [ -f /usr/bin/screenfetch ]; then
   screenfetch
 fi
-
-# Teleconsole does not preserve TMUX env variable
-# Also: we don't want this behaviour in Linux consoles
-if [[ -z "$TMUX" ]] && [[ -z "$TELEPORT_SESSION" ]] && [[ "$TERM" != linux ]]; then
-  # Attempt to discover a detached session and attach it, else create a new
-  # session
-  CURRENT_USER=$(whoami)
-  if tmux has-session -t $CURRENT_USER 2>/dev/null; then
-    tmux attach-session -t $CURRENT_USER
-  else
-    tmux new-session -s $CURRENT_USER
-  fi
-fi
