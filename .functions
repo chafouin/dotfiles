@@ -41,3 +41,10 @@ dict() {
     echo 'Unknown command. Use (d)efine or (m)atch.'
   fi
 }
+
+# Format Hugo content file
+fmt_hugo() {
+  HEADER=$(sed -n '/---/,/---/p' $1)
+  CONTENT=$(fmt -w 80 <(sed -n '/---/,/---/!p' $1))
+	echo "${HEADER}\n${CONTENT}"
+}
